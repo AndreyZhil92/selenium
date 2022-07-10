@@ -1,16 +1,29 @@
-from selenium import webdriver
+'''from selenium import webdriver
 from selenium.webdriver.common.by import By
-import math
 
-x=str(math.ceil(math.pow(math.pi, math.e)*10000))
-
-link = "http://suninjuly.github.io/find_link_text"
+link = "http://suninjuly.github.io/simple_form_find_task.html"
 
 try:
     browser = webdriver.Chrome()
     browser.get(link)
-    link = browser.find_element(By.LINK_TEXT, x)
-    link.click()
+    button = browser.find_element(By.ID, "submit_button")
+    button.click()
+
+finally:
+    # закрываем браузер после всех манипуляций
+    browser.quit()'''
+
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+link = "http://suninjuly.github.io/simple_form_find_task.html"
+
+try:
+    browser = webdriver.Chrome()
+    browser.get(link)
 
     input1 = browser.find_element(By.NAME, "first_name")
     input1.send_keys("Ivan")
@@ -24,7 +37,10 @@ try:
     button.click()
 
 finally:
+    driver.close()
     # успеваем скопировать код за 30 секунд
-    time.sleep(5)
+    time.sleep(30)
     # закрываем браузер после всех манипуляций
     browser.quit()
+
+# не забываем оставить пустую строку в конце файла
