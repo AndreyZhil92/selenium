@@ -1,3 +1,22 @@
+#найти кнопку со значением id="submit_button":
+
+'''from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+link = "http://suninjuly.github.io/simple_form_find_task.html"
+
+try:
+    browser = webdriver.Chrome()
+    browser.get(link)
+    button = browser.find_element(By.ID, "submit_button")
+    button.click()
+
+finally:
+    # закрываем браузер после всех манипуляций
+    browser.quit()'''
+
+#Для того чтобы гарантировать закрытие, даже если произошла ошибка в предыдущих строках, проще всего использовать конструкцию try/finally:
+
 '''from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -14,6 +33,12 @@ finally:
     browser.quit()'''
 
 
+#Задание: поиск элементов с помощью Selenium
+'''Вам нужно открыть страницу по ссылке и заполнить форму на этой странице с помощью Selenium.
+
+Для решения этой задачи мы подготовили для вас шаблон кода, в который нужно только подставить 
+нужные значения для поиска вместо слов value1, value2 и т.д Обратите внимание, что значения нужно 
+заключать в кавычки, т.к. они должны передаваться в виде строки.'''
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By

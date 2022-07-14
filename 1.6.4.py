@@ -1,3 +1,35 @@
+#Задание: поиск элемента по XPath
+'''На этот раз воспользуемся возможностью искать элементы по XPath.
+
+На странице http://suninjuly.github.io/find_xpath_form вы найдете такую же форму регистрации,
+как в шаге 3, при этом в нее добавилась куча одинаковых кнопок отправки. Но сработает только
+ кнопка с текстом "Submit", и наша задача нажать в коде именно на неё.
+
+Ваши шаги:
+
+В коде из шага 4 замените ссылку на  http://suninjuly.github.io/find_xpath_form.
+Подберите уникальный XPath-селектор так, чтобы он находил только кнопку с текстом Submit. XPath можете формулировать как угодно (по тексту, по структуре, по атрибутам) - главное, чтобы он работал.
+Модифицируйте код из шага 3 таким образом, чтобы поиск кнопки происходил с помощью XPath.
+Запустите ваш код.'''
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+url = 'http://suninjuly.github.io/find_xpath_form'
+with webdriver.Chrome() as browser:
+    browser.get(url=url)
+    inputs = browser.find_elements(By.XPATH, "//*[@class='form-group']/ input")
+    for i in inputs:
+        i.send_keys('qwerty')
+    time.sleep(1)
+    browser.find_element(By.XPATH, "//*[ text()='Submit']").click()
+
+    alert = browser.switch_to.alert
+    print(alert.text.split(': ')[-1])
+    alert.accept()
+
 '''from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -23,27 +55,8 @@ finally:
     time.sleep(30) # успеваем скопировать код за 30 секунд
     browser.quit() # закрываем браузер после всех манипуляций'''
 
-    # не забываем оставить пустую строку в конце файла
 
 '''import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-url = 'http://suninjuly.github.io/find_xpath_form'
-with webdriver.Chrome() as browser:
-    browser.get(url=url)
-    inputs = browser.find_elements(By.XPATH, "//*[@class='form-group']/ input")
-    for i in inputs:
-        i.send_keys('qwerty')
-    time.sleep(1)
-    browser.find_element(By.XPATH, "//*[ text()='Submit']").click()
-
-    alert = browser.switch_to.alert
-    print(alert.text.split(': ')[-1])
-    alert.accept()'''
-
-import time
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -75,4 +88,4 @@ if __name__ == '__main__':
     finally:
         browser.close()
         time.sleep(2)
-        browser.quit()
+        browser.quit()'''
